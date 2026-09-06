@@ -1,0 +1,45 @@
+Internee.pk Internship Portal Guidelines:
+- Tasks Submission Process: Interns must log in to the official dashboard account. Go to your active track, paste the link of your task submission (GitHub repository or hosted deployment links), fill the review form, and click submit. The Skill Verification System will then process it.
+- Duration of Internships: All virtual internship tracks on Internee.pk have a standard duration of 1 to 2 months.
+- Offered Internship Tracks and Modules: Internee.pk offers technical and creative programs including Web Development (React, Node.js, PHP), Mobile App Development (Flutter), Graphic Design, UI/UX Architecture, Digital Marketing, SEO Content Operations, Data Science, Machine Learning, and advanced Generative AI and Prompt Engineering tracks.
+
+========================================================================
+                     INTERNEE.PK OFFICIAL KNOWLEDGE BASE
+========================================================================
+
+[PLATFORM OVERVIEW]
+- Name: internee.pk (Copyright © 2026)
+- Tagline: Build Skills. Get Experience. Land Your Job.
+- Mission: Pakistan's innovative virtual internship platform designed to turbocharge the IT sector. It helps students stop waiting for opportunities, build real-world skills, and kickstart their professional tech careers.
+
+[INTERNSHIP ECOSYSTEM & STRUCTURE]
+- Process Steps: 
+  1. Sign Up & Choose a Domain (Explore a wide range of internships across industries tailored to your skills).
+  2. Complete Your Application (Submit a short form and secure an internship in minutes).
+  3. Earn Your Certificate (Finish the internship, gain real experience, and get a verified certificate).
+- Offerings:
+  * 10+ in-demand tech tracks to choose from.
+  * Hands-on industry projects mirroring real-world industry workflows.
+  * Project-based learning based on industry-standard practices.
+  * SDLC Implementation to experience the complete Software Development Life Cycle through structured tasks.
+  * Guided Learning Paths designed for both beginners and advanced learners with guided weekly sessions.
+
+[THE INTERNEE.PK TASK PORTAL]
+- Concept: Turn learning into proof.
+- Features: Complete real tasks, receive structured feedback, and build an employer-trusted professional portfolio.
+- Skill Verification System: Every completed task adds verified proof to the student's profile to track progress and showcase outcomes with confidence.
+
+[AI CAREER COACH & INTERVIEW SUITE]
+- Mock Interviews: Realistic, role-specific AI interview simulations for Tech (Software Engineering), Product Management, Business, and Digital Marketing.
+- Smart Feedback: Instantly analyzes answers, tone, and relevance to reduce anxiety and build interview confidence.
+- Career Coach Platform: Offers professional tools for resume building, cover letter creation, interview preparation strategies, practice quizzes, and up-to-date AI industry trend insights.
+
+[INSTRUCTOR & CONTENT CREATOR PROGRAM]
+- Concept: Monetize expertise while helping learners.
+- Features: Tech instructors and creators can upload tutorials, exercises, and projects in their native language.
+- Benefits: Build a personal brand/instructor profile within the online learning ecosystem and earn passive income through a transparent, fair payment model.
+
+[COMMUNITY & COMMUNITY PROOF]
+- Features: Expert-led sessions, masterclasses, and an exclusive newsletter for industry insights.
+- Success Story Example: A former platform user grew their skills on internee.pk and is now working as a Flutter Developer for a US-based company.
+========================================================================

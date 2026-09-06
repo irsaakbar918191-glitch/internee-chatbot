@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internee.pk - AI Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen flex flex-col font-sans">
+    
+    <header class="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <span class="bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-500/20">
+                ● 24/7 Live Support
+            </span>
+            <h1 class="text-base font-bold text-white">Internee.pk Intern Support Chatbot</h1>
+        </div>
+        <div class="text-xs text-slate-400">RAG Engine Powered</div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden">
+        <aside class="w-80 bg-slate-900 border-r border-slate-800 p-4 flex flex-col justify-between hidden md:flex">
+            <div>
+                <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Saved Queries</h2>
+                <div class="space-y-2 overflow-y-auto max-h-[calc(100vh-180px)] pr-1">
+                    {% for chat in chat_logs %}
+                        <div class="p-2.5 bg-slate-800/40 rounded-lg border border-slate-800 text-xs">
+                            <p class="text-emerald-400 font-medium truncate">{{ chat.user_message }}</p>
+                            <span class="text-slate-500 text-[10px]">{{ chat.timestamp.strftime('%b %d, %H:%M') }}</span>
+                        </div>
+                    {% else %}
+                        <p class="text-xs text-slate-500 italic">No history yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="p-3 bg-slate-800/50 rounded-xl border border-slate-800 text-xs text-slate-400">
+                💡 Ask queries in English, Urdu, or Roman Urdu.
+            </div>
+        </aside>
+
+        <main class="flex-1 flex flex-col bg-slate-950">
+            <div id="chat-box" class="flex-1 p-6 overflow-y-auto space-y-4">
+                <div class="flex gap-3 max-w-2xl">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-900 font-bold text-xs shrink-0">AI</div>
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl text-sm leading-relaxed text-slate-200">
+                        Welcome! How can I help you with your Internee.pk tasks, submissions, or policies today?
+                    </div>
+                </div>
+
+                {% for chat in chat_logs %}
+                    <div class="flex gap-3 max-w-2xl ml-auto flex-row-reverse">
+                        <div class="w-8 h-8 rounded-lg bg-slate-700 flex items-center justify-center text-white font-bold text-xs shrink-0">You</div>
+                        <div class="bg-emerald-600 text-white p-4 rounded-2xl text-sm leading-relaxed">{{ chat.user_message }}</div>
+                    </div>
+                    <div class="flex gap-3 max-w-2xl">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-900 font-bold text-xs shrink-0">AI</div>
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl text-sm leading-relaxed text-slate-200 whitespace-pre-wrap">{{ chat.bot_response }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="p-4 border-t border-slate-800 bg-slate-900">
+                <div class="max-w-4xl mx-auto flex gap-3">
+                    <input id="user-input" type="text" onkeydown="if(event.key==='Enter') sendMessage()" class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-emerald-500 text-white" placeholder="Type your query...">
+                    <button onclick="sendMessage()" class="bg-emerald-500 hover:bg-emerald-600 px-6 py-3 rounded-xl text-slate-950 font-bold text-sm transition">Send</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const input = document.getElementById("user-input");
+            const chatBox = document.getElementById("chat-box");
+            const query = input.value.trim();
+
+            if (!query) return;
+
+            chatBox.innerHTML += `
+                <div class="flex gap-3 max-w-2xl ml-auto flex-row-reverse">
+                    <div class="w-8 h-8 rounded-lg bg-slate-700 flex items-center justify-center text-white font-bold text-xs shrink-0">You</div>
+                    <div class="bg-emerald-600 text-white p-4 rounded-2xl text-sm leading-relaxed">${query}</div>
+                </div>`;
+            
+            input.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            const res = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: query })
+            });
+
+            const data = await res.json();
+
+            chatBox.innerHTML += `
+                <div class="flex gap-3 max-w-2xl">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-slate-900 font-bold text-xs shrink-0">AI</div>
+                    <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl text-sm leading-relaxed text-slate-200 whitespace-pre-wrap">${data.response}</div>
+                </div>`;
+            
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
